@@ -4,9 +4,11 @@ class MovieDb
 
   def initialize
     @options = { query: { api_key: ENV['MOVIE_DB_API_KEY'] } }
+    @presenter = MoviePresenter.new
   end
 
   def now_playing
-    self.class.get('/movie/now_playing', @options)
+    movies = self.class.get('/movie/now_playing', @options)
+    @presenter.present_collection(movies['results'])
   end
 end

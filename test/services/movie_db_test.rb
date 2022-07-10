@@ -7,19 +7,19 @@ class MovieDBTest < ActiveSupport::TestCase
   end
   describe '.now_playing' do
     it 'should return a list of movies' do
-      assert @movies['results'].size > 0
+      assert @movies.size > 0
     end
 
     describe 'movie description' do
       it 'should have a title' do
-        @movies['results'].each do |movie|
-          assert_not movie['original_title'].nil? 
+        @movies.each do |movie|
+          assert_not movie[:title].nil? 
         end
       end
 
       it 'should have a release_date' do
-        @movies['results'].each do |movie|
-          assert_not movie['release_date'].nil? 
+        @movies.each do |movie|
+          assert_not movie[:release_date].nil? 
         end
       end
     end
