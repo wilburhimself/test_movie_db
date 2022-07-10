@@ -1,5 +1,5 @@
 class Api::MoviesController < ApplicationController
   def index
-    render json: { message: 'hello' }
+    render json: { movies: MovieDb.new.now_playing }
   end
 end
