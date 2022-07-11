@@ -1,24 +1,15 @@
-# README
+# Wilbur Suero take home assignment
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Hi, I'm Wilbur Suero, this is my take home assignment for the fullstask engineer role at hired.
 
-Things you may want to cover:
+To run this project you will need to create an `.env` file at the root of this project with:
 
-* Ruby version
+```
+MOVIE_DB_API_KEY='your movie db api key'
+```
 
-* System dependencies
+I hope you like it and we talk soon.
 
-* Configuration
+Cheers,
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Wilbur.
