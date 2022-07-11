@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import ReactDOM from 'react-dom'
+import * as ReactDOM from 'react-dom/client';
 import PropTypes from 'prop-types'
 import axios from 'axios'
 
@@ -22,8 +22,8 @@ const Movies = () => {
     <div className="movies-container">
       <h2>Movies</h2>
       <ol>
-        {movies.map((movie) => (
-          <li>
+        {movies.map((movie, index) => (
+          <li key={`movie-${index}`}>
             <h4>{movie.title}</h4>
             <small>Release date: {formatDate(movie.release_date)}</small>
           </li>
@@ -34,8 +34,6 @@ const Movies = () => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <Movies />,
-    document.body.appendChild(document.createElement('div')),
-  )
+  const root = ReactDOM.createRoot(document.getElementById('movie-list'))
+  root.render(<Movies />)
 })
