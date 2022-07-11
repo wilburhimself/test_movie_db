@@ -2,9 +2,7 @@ ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
 require "minitest/rails"
-
-# Consider setting MT_NO_EXPECTATIONS to not add expectations to Object.
-# ENV["MT_NO_EXPECTATIONS"] = true
+Dir[File.expand_path("../support/**/*.rb", __FILE__)].each { |rb| require(rb) }
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers

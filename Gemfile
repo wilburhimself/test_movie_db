@@ -35,6 +35,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'minitest-rails'
   gem 'pry-rails'
+  gem 'webmock'
+  gem 'vcr'
 end
 
 group :development do

@@ -2,8 +2,10 @@ require 'test_helper'
 
 class MovieDBTest < ActiveSupport::TestCase
   before do
-    @movie_db = MovieDb.new
-    @movies = @movie_db.now_playing
+    VCR.use_cassette('movieDB now_playing', record: :none) do
+      @movie_db = MovieDb.new
+      @movies = @movie_db.now_playing
+    end
   end
   describe '.now_playing' do
     it 'should return a list of movies' do
