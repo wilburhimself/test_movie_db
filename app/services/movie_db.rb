@@ -11,4 +11,10 @@ class MovieDb
     movies = self.class.get('/movie/now_playing', @options)
     @presenter.present_collection(movies['results'])
   end
+
+  def search_movies(query)
+    @options[:query][:query] = query
+    movies = self.class.get('/search/movie', @options)
+    @presenter.present_collection(movies['results'])
+  end
 end
