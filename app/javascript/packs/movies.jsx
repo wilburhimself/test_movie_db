@@ -5,6 +5,7 @@ import axios from 'axios'
 
 const Movies = () => {
   const [movies, setMovies] = useState([])
+  const [searchQuery, setSearchQuery] = useState(null)
 
   useEffect(() => {
     axios.get('/api/movies').then((response) => {
@@ -12,15 +13,28 @@ const Movies = () => {
     })
   }, [])
 
+  useEffect( () => {
+    searchMovies(searchQuery)
+  }, [searchQuery]) 
+
   const formatDate = (date) => {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
     const dd = new Date(date)
     return dd.toLocaleDateString('en-US', options)
   }
 
+  const searchMovies = async (query) => {
+    await axios.get(`/api/search?query=${query}`).then((response) => {
+      setMovies(response.data.movies)
+    })
+  }
+
   return (
     <div className="movies-container">
       <h2>Movies</h2>
+
+      <input type="text" onChange={(event) => { setSearchQuery(event.target.value) }} placeholder="Type the name of your movie ..." />
+
       <ol>
         {movies.map((movie, index) => (
           <li key={`movie-${index}`}>
